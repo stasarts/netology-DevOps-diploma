@@ -1,0 +1,11 @@
+- hosts: run
+  become:
+    true
+  become_method:
+    sudo
+  become_user:
+    root
+  remote_user:
+    ubuntu
+  roles:
+    - ansible-gitlab-runner
