@@ -34,7 +34,7 @@ resource "yandex_dns_recordset" "rs3" {
 
 resource "yandex_dns_recordset" "rs4" {
   zone_id = yandex_dns_zone.avt0m8-zone.id
-  name    = "runner"
+  name    = "grafana"
   type    = "A"
   ttl     = 600
   data    = [yandex_compute_instance.nginx[0].network_interface[0].nat_ip_address]
@@ -43,15 +43,6 @@ resource "yandex_dns_recordset" "rs4" {
 
 resource "yandex_dns_recordset" "rs5" {
   zone_id = yandex_dns_zone.avt0m8-zone.id
-  name    = "grafana"
-  type    = "A"
-  ttl     = 600
-  data    = [yandex_compute_instance.nginx[0].network_interface[0].nat_ip_address]
-  depends_on = [yandex_compute_instance.nginx]
-}
-
-resource "yandex_dns_recordset" "rs6" {
-  zone_id = yandex_dns_zone.avt0m8-zone.id
   name    = "prometheus"
   type    = "A"
   ttl     = 600
@@ -59,7 +50,7 @@ resource "yandex_dns_recordset" "rs6" {
   depends_on = [yandex_compute_instance.nginx]
 }
 
-resource "yandex_dns_recordset" "rs7" {
+resource "yandex_dns_recordset" "rs6" {
   zone_id = yandex_dns_zone.avt0m8-zone.id
   name    = "alertmanager"
   type    = "A"
